@@ -12,7 +12,9 @@ public class CadastroVeiculoService {
 
     @Autowired
     private VeiculoRepository veiculoRepository;
-
+     
+   
+       
     public Veiculo cadastrar(Veiculo veiculo) {
         return veiculoRepository.salvar(veiculo);
     }
