@@ -1,0 +1,32 @@
+{
+  "realm": "revenda",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "revenda-app",
+      "enabled": true,
+      "publicClient": true,
+      "redirectUris": ["*"],
+      "webOrigins": ["*"],
+      "protocol": "openid-connect",
+      "standardFlowEnabled": true
+    }
+  ],
+  "users": [
+    {
+      "username": "usuario1",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Usuário",
+      "lastName": "Teste",
+      "email": "usuario1@revenda.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "123456",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

@@ -70,6 +70,8 @@ public class Veiculo {
         this.preco = preco;
         this.vendido = vendido;
     }
+    public Veiculo() {
+    }
 
     
 }
