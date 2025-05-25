@@ -34,7 +34,7 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
     ports:
-      - "8080:8080"
+      - "8081:8081"
     volumes:
       - ./realm-revenda.json:/opt/keycloak/data/import/realm-revenda.json
     depends_on:
