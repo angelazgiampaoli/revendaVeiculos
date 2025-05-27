@@ -10,20 +10,17 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @EnableMethodSecurity
 public class SecurityConfig {
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-            .csrf(csrf -> csrf.disable())
+ @Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/veiculos/listar", "/veiculos/disponiveis").permitAll()
-                .requestMatchers("/veiculos/comprar/**", "/veiculos/cadastrar", "/veiculos/editar").authenticated()
-                .anyRequest().authenticated()
-            )
-            .oauth2ResourceServer(oauth2 -> oauth2
-                .jwt()
-            );
+            .requestMatchers("/veiculos/comprar/**").authenticated()
+            .anyRequest().permitAll()
+        )
+        .oauth2ResourceServer(oauth2 -> oauth2.jwt()); // Usa JWT enviado pelo Keycloak
 
-        return http.build();
-    }
+    return http.build();
+}
+
 }
 

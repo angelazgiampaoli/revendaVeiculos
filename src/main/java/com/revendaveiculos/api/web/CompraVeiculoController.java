@@ -17,12 +17,21 @@ public class CompraVeiculoController {
     @Autowired
     private CadastroVeiculoService cadastroVeiculoService;
 
+     
     @PostMapping("/comprar/{id}")
     public ResponseEntity<String> comprar(@PathVariable Long id) {
-        Veiculo veiculo = cadastroVeiculoService.editar(id, new Veiculo());
-        veiculo.setVendido(true);
-        cadastroVeiculoService.cadastrar(veiculo);
-        return ResponseEntity.ok("Compra realizada com sucesso!");
+ 
+    Veiculo veiculo = cadastroVeiculoService.buscarPorId(id);
+    
+    if (veiculo == null) {
+        return ResponseEntity.notFound().build();
     }
+
+    veiculo.setVendido(true);
+    cadastroVeiculoService.cadastrar(veiculo);
+
+    return ResponseEntity.ok("Compra realizada com sucesso!");
+}
+
 }
 
