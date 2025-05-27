@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+
 @Service
 public class CadastroVeiculoService {
 
@@ -14,11 +15,17 @@ public class CadastroVeiculoService {
     private VeiculoRepository veiculoRepository;
      
    
-       
+    
     public Veiculo cadastrar(Veiculo veiculo) {
         return veiculoRepository.salvar(veiculo);
     }
 
+    public Veiculo buscarPorId(Long id) {
+    return veiculoRepository.buscarPorId(id).orElse(null);
+}
+
+
+    
     public Veiculo editar(Long id, Veiculo dadosAtualizados) {
         Veiculo veiculo = veiculoRepository.buscarPorId(id)
             .orElseThrow(() -> new RuntimeException("Veículo não encontrado"));

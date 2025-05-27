@@ -21,14 +21,15 @@ public class VeiculoController {
 
     @Autowired
     private CadastroVeiculoService cadastroVeiculoService;
+    @Autowired
     private ListagemVeiculosService listagemVeiculosService;
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     public ResponseEntity<Veiculo> cadastrar(@RequestBody @Valid Veiculo veiculo) {
         return ResponseEntity.status(HttpStatus.CREATED).body(cadastroVeiculoService.cadastrar(veiculo));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("editar/{id}")
     public ResponseEntity<Veiculo> editar(@PathVariable Long id, @RequestBody Veiculo veiculo) {
         return ResponseEntity.ok(cadastroVeiculoService.editar(id, veiculo));
     }
