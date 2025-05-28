@@ -9,9 +9,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-
+import jakarta.annotation.security.PermitAll;
 import jakarta.validation.Valid;
 
 
@@ -24,6 +25,7 @@ public class VeiculoController {
     @Autowired
     private ListagemVeiculosService listagemVeiculosService;
 
+    @PermitAll
     @PostMapping("/cadastrar")
     public ResponseEntity<Veiculo> cadastrar(@RequestBody @Valid Veiculo veiculo) {
         return ResponseEntity.status(HttpStatus.CREATED).body(cadastroVeiculoService.cadastrar(veiculo));

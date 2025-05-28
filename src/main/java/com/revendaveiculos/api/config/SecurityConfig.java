@@ -13,12 +13,13 @@ public class SecurityConfig {
  @Bean
 public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
             .requestMatchers("/veiculos/comprar/**").authenticated()
+            .requestMatchers("/veiculos/**").permitAll()
             .anyRequest().permitAll()
         )
-        .oauth2ResourceServer(oauth2 -> oauth2.jwt()); // Usa JWT enviado pelo Keycloak
-
+        .oauth2ResourceServer(oauth2 -> oauth2.jwt());
     return http.build();
 }
 
